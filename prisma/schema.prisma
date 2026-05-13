@@ -1,0 +1,404 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =============================================
+// USER
+// =============================================
+model User {
+  id        String  @id @default(cuid())
+  name      String
+  email     String  @unique
+  password  String?
+  avatar    String?
+  role      String
+  points    Int     @default(0)
+
+  tasksAssigned Task[]        @relation("Assignee")
+  transactions  Transaction[]
+  logs          ActivityLog[]
+
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  ClientNote   ClientNote[]
+  Notification Notification[]
+  WorkLog      WorkLog[]
+
+  @@index([role])
+  @@map("users")
+}
+
+// =============================================
+// PROJECT
+// =============================================
+model Project {
+  id              String    @id @default(cuid())
+  name            String
+  status          String    @default("Active")
+  description     String?
+  summary         String?
+  goals           String?
+  styleNotes      String?
+  background      String?   // JSON untuk slides / brief
+  formatSpecs     String?   // JSON specs
+  visualReference String?
+  deadline        DateTime?
+
+  // Extended fields
+  clientId        String?
+  category        String?
+  platform        String?
+  leadId          String?
+  members         Json?     // String[] stored as JSON
+  designerIds     Json?     // String[] of designer user IDs who can access this project
+  budget          Float?
+  pointConfig     Json?     // { concept, revision, final }
+  referenceLinks  String?   // JSON string storing array of { id, url, label, type }
+
+  tasks       Task[]
+  invoices    Invoice[]
+  transactions Transaction[]
+  projectBudget Budget?
+  client      Client? @relation(fields: [clientId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([clientId])
+  @@index([leadId])
+  @@index([deadline])
+  @@map("projects")
+}
+
+// =============================================
+// TASK (Kanban)
+// =============================================
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  status      String   @default("IN PROGRESS / REVIEW")
+  priority    String?
+  points      Int      @default(20)
+  deadline    DateTime @default(now())
+  tags        String[] @default([])
+
+  checklist   Json?
+  comments    Json?
+  attachments Json?
+
+  projectId  String
+  assigneeId String?
+
+  project  Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assignee User?   @relation("Assignee", fields: [assigneeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([projectId])
+  @@index([assigneeId])
+  @@index([status])
+  @@index([deadline])
+  @@map("tasks")
+}
+
+// =============================================
+// PAYMENT METHOD
+// =============================================
+model PaymentMethod {
+  id   String @id @default(cuid())
+  name String @unique // cash, bank transfer, paypal, crypto, e-wallet
+
+  @@map("payment_methods")
+}
+
+// =============================================
+// TRANSACTION (Finance)
+// =============================================
+model Transaction {
+  id                String   @id @default(cuid())
+  type              String   // income / expense
+  amount            Float
+  status            String   // Completed, Pending, Cancelled
+  description       String?
+  userId            String
+  category          String?
+  paymentMethod     String?  // cash, bank transfer, paypal, crypto, e-wallet
+  date              DateTime @default(now())
+  relatedId         String?
+  projectId         String?
+  invoiceId         String?
+  attachmentUrl     String?
+
+  user    User     @relation(fields: [userId], references: [id])
+  invoice Invoice? @relation(fields: [invoiceId], references: [id], onDelete: SetNull)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([projectId])
+  @@index([invoiceId])
+  @@index([status])
+  @@index([type])
+  @@index([date])
+  @@map("transactions")
+}
+
+// =============================================
+// BUDGET (Project Budget Tracking)
+// =============================================
+model Budget {
+  id              String   @id @default(cuid())
+  projectId       String   @unique
+  plannedBudget   Float
+  actualRevenue   Float    @default(0)
+  actualExpenses  Float    @default(0)
+  status          String   @default("Healthy") // Healthy, Warning, Over Budget
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("budgets")
+}
+
+// =============================================
+// ACTIVITY LOG
+// =============================================
+model ActivityLog {
+  id        String   @id @default(cuid())
+  action    String
+  category  String
+  details   String?
+  userId    String
+  timestamp DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([category])
+  @@index([timestamp])
+  @@map("activity_logs")
+}
+
+// =============================================
+// CRM (Clients & Notes)
+// =============================================
+model Client {
+  id          String    @id @default(cuid())
+  name        String
+  company     String?
+  email       String    @unique
+  phone       String?
+  status      String    @default("Lead") // Lead, Active, Inactive
+  totalSpent  Float     @default(0)
+  lastContact DateTime?
+  tags        String[]  @default([])
+  platform    String    @default("Direct")
+  country     String?
+  avatar      String?
+
+  notes    ClientNote[]
+  invoices Invoice[]
+  projects Project[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([email])
+  @@map("clients")
+}
+
+model ClientNote {
+  id        String   @id @default(cuid())
+  clientId  String
+  userId    String
+  content   String
+  timestamp DateTime @default(now())
+
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@map("client_notes")
+}
+
+// =============================================
+// ASSETS
+// =============================================
+model Asset {
+  id       String   @id @default(cuid())
+  name     String
+  type     String // folder / file
+  url      String?
+  size     String?
+  folderId String?
+  tags     String[]
+
+  versions AssetVersion[]
+  parent   Asset?         @relation("FolderChildren", fields: [folderId], references: [id])
+  children Asset[]        @relation("FolderChildren")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("assets")
+}
+
+model AssetVersion {
+  id        String   @id @default(cuid())
+  assetId   String
+  version   Int
+  url       String
+  createdAt DateTime @default(now())
+
+  asset Asset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+
+  @@map("asset_versions")
+}
+
+// =============================================
+// INVOICES
+// =============================================
+model Invoice {
+  id            String   @id @default(cuid())
+  invoiceNumber String   @unique
+  clientId      String
+  projectId     String?
+  
+  // Invoice Details
+  issueDate     DateTime @default(now())
+  dueDate       DateTime
+  status        String   @default("Draft") // Draft, Sent, Viewed, Pending, Paid, Overdue, Cancelled
+  
+  // Amounts
+  subtotal      Float    @default(0)
+  tax           Float    @default(0)
+  total         Float    @default(0)
+  currency      String   @default("USD")
+  
+  // Additional Fields
+  notes         String?
+  paymentTerms  String?
+  reminder      Boolean  @default(true)
+  
+  // Relations
+  items        InvoiceItem[]
+  transactions Transaction[]
+  
+  client Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientId])
+  @@index([projectId])
+  @@index([status])
+  @@index([dueDate])
+  @@map("invoices")
+}
+
+// =============================================
+// INVOICE ITEMS
+// =============================================
+model InvoiceItem {
+  id        String   @id @default(cuid())
+  invoiceId String
+  name      String
+  quantity  Int
+  unitPrice Float
+  total     Float
+
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@map("invoice_items")
+}
+
+// =============================================
+// SOPS
+// =============================================
+model SOP {
+  id          String  @id @default(cuid())
+  title       String
+  description String?
+  category    String
+  steps       Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sops")
+}
+
+// =============================================
+// CATEGORIES (Transaction & Invoice Categories)
+// =============================================
+model TransactionCategory {
+  id       String @id @default(cuid())
+  name     String @unique
+  type     String // income, expense
+  color    String @default("#8b5cf6")
+  order    Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transaction_categories")
+}
+
+// =============================================
+// CATEGORIES
+// =============================================
+model Category {
+  id    String @id @default(cuid())
+  name  String @unique
+  color String @default("#8b5cf6")
+
+  @@map("categories")
+}
+
+// =============================================
+// NOTIFICATIONS
+// =============================================
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  link      String?
+  timestamp DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+// =============================================
+// WORK LOGS
+// =============================================
+model WorkLog {
+  id          String   @id @default(cuid())
+  userId      String
+  taskId      String?
+  hours       Float
+  description String
+  date        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("work_logs")
+}

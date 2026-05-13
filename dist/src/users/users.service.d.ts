@@ -23,7 +23,7 @@ export declare class UsersService {
         points: number;
         createdAt: Date;
         updatedAt: Date;
-    } | null>;
+    }>;
     findByEmail(email: string): Promise<{
         id: string;
         name: string;
@@ -34,7 +34,7 @@ export declare class UsersService {
         points: number;
         createdAt: Date;
         updatedAt: Date;
-    } | null>;
+    }>;
     create(data: {
         name: string;
         email: string;

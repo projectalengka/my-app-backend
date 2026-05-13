@@ -25,7 +25,7 @@ export declare class WorkLogsController {
         date: Date;
         taskId: string | null;
         hours: number;
-    } | null>;
+    }>;
     update(id: string, data: any): Promise<{
         id: string;
         description: string;

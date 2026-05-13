@@ -11,11 +11,11 @@ export declare class ClientsService {
         updatedAt: Date;
         status: string;
         platform: string;
-        tags: string[];
         company: string | null;
         phone: string | null;
         totalSpent: number;
         lastContact: Date | null;
+        tags: string[];
         country: string | null;
     }>;
     findAll(): Promise<({
@@ -25,8 +25,8 @@ export declare class ClientsService {
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -53,13 +53,13 @@ export declare class ClientsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         }[];
     } & {
         id: string;
@@ -70,22 +70,22 @@ export declare class ClientsService {
         updatedAt: Date;
         status: string;
         platform: string;
-        tags: string[];
         company: string | null;
         phone: string | null;
         totalSpent: number;
         lastContact: Date | null;
+        tags: string[];
         country: string | null;
     })[]>;
-    findOne(id: string): Promise<({
+    findOne(id: string): Promise<{
         invoices: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -112,13 +112,13 @@ export declare class ClientsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         }[];
     } & {
         id: string;
@@ -129,13 +129,13 @@ export declare class ClientsService {
         updatedAt: Date;
         status: string;
         platform: string;
-        tags: string[];
         company: string | null;
         phone: string | null;
         totalSpent: number;
         lastContact: Date | null;
+        tags: string[];
         country: string | null;
-    }) | null>;
+    }>;
     update(id: string, data: any): Promise<{
         id: string;
         name: string;
@@ -145,11 +145,11 @@ export declare class ClientsService {
         updatedAt: Date;
         status: string;
         platform: string;
-        tags: string[];
         company: string | null;
         phone: string | null;
         totalSpent: number;
         lastContact: Date | null;
+        tags: string[];
         country: string | null;
     }>;
     remove(id: string): Promise<{
@@ -161,11 +161,11 @@ export declare class ClientsService {
         updatedAt: Date;
         status: string;
         platform: string;
-        tags: string[];
         company: string | null;
         phone: string | null;
         totalSpent: number;
         lastContact: Date | null;
+        tags: string[];
         country: string | null;
     }>;
 }

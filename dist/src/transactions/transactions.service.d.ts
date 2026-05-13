@@ -45,15 +45,15 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
-        invoice: ({
+        };
+        invoice: {
             client: {
                 id: string;
                 name: string;
@@ -63,11 +63,11 @@ export declare class TransactionsService {
                 updatedAt: Date;
                 status: string;
                 platform: string;
-                tags: string[];
                 company: string | null;
                 phone: string | null;
                 totalSpent: number;
                 lastContact: Date | null;
+                tags: string[];
                 country: string | null;
             };
         } & {
@@ -76,8 +76,8 @@ export declare class TransactionsService {
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -87,7 +87,7 @@ export declare class TransactionsService {
             currency: string;
             paymentTerms: string | null;
             reminder: boolean;
-        }) | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -95,12 +95,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     })[]>;
@@ -132,15 +132,15 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
-        invoice: ({
+        };
+        invoice: {
             client: {
                 id: string;
                 name: string;
@@ -150,11 +150,11 @@ export declare class TransactionsService {
                 updatedAt: Date;
                 status: string;
                 platform: string;
-                tags: string[];
                 company: string | null;
                 phone: string | null;
                 totalSpent: number;
                 lastContact: Date | null;
+                tags: string[];
                 country: string | null;
             };
         } & {
@@ -163,8 +163,8 @@ export declare class TransactionsService {
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -174,7 +174,7 @@ export declare class TransactionsService {
             currency: string;
             paymentTerms: string | null;
             reminder: boolean;
-        }) | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -182,12 +182,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     }>;
@@ -219,22 +219,22 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
+        };
         invoice: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -244,7 +244,7 @@ export declare class TransactionsService {
             currency: string;
             paymentTerms: string | null;
             reminder: boolean;
-        } | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -252,12 +252,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     })[]>;
@@ -289,14 +289,14 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -304,12 +304,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     })[]>;
@@ -341,14 +341,14 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -356,12 +356,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     })[]>;
@@ -393,22 +393,22 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
+        };
         invoice: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -418,7 +418,7 @@ export declare class TransactionsService {
             currency: string;
             paymentTerms: string | null;
             reminder: boolean;
-        } | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -426,12 +426,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     }>;
@@ -463,22 +463,22 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
+        };
         invoice: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -488,7 +488,7 @@ export declare class TransactionsService {
             currency: string;
             paymentTerms: string | null;
             reminder: boolean;
-        } | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -496,12 +496,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     }>;
@@ -533,22 +533,22 @@ export declare class TransactionsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
-        } | null;
+        };
         invoice: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -558,7 +558,7 @@ export declare class TransactionsService {
             currency: string;
             paymentTerms: string | null;
             reminder: boolean;
-        } | null;
+        };
     } & {
         paymentMethod: string | null;
         category: string | null;
@@ -566,12 +566,12 @@ export declare class TransactionsService {
         createdAt: Date;
         status: string;
         description: string | null;
-        projectId: string | null;
         type: string;
         amount: number;
         userId: string;
         date: Date;
         relatedId: string | null;
+        projectId: string | null;
         invoiceId: string | null;
         attachmentUrl: string | null;
     }>;

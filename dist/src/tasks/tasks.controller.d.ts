@@ -19,13 +19,13 @@ export declare class TasksController {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
         assignee: {
             id: string;
@@ -37,7 +37,7 @@ export declare class TasksController {
             points: number;
             createdAt: Date;
             updatedAt: Date;
-        } | null;
+        };
     } & {
         id: string;
         points: number;
@@ -46,16 +46,16 @@ export declare class TasksController {
         status: string;
         description: string | null;
         deadline: Date;
+        tags: string[];
+        projectId: string;
         title: string;
         priority: string | null;
-        tags: string[];
         checklist: import("@prisma/client/runtime/library").JsonValue | null;
         comments: import("@prisma/client/runtime/library").JsonValue | null;
         attachments: import("@prisma/client/runtime/library").JsonValue | null;
-        projectId: string;
         assigneeId: string | null;
     })[]>;
-    findOne(id: string): Promise<({
+    findOne(id: string): Promise<{
         project: {
             budget: number | null;
             category: string | null;
@@ -72,13 +72,13 @@ export declare class TasksController {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
         assignee: {
             id: string;
@@ -90,7 +90,7 @@ export declare class TasksController {
             points: number;
             createdAt: Date;
             updatedAt: Date;
-        } | null;
+        };
     } & {
         id: string;
         points: number;
@@ -99,15 +99,15 @@ export declare class TasksController {
         status: string;
         description: string | null;
         deadline: Date;
+        tags: string[];
+        projectId: string;
         title: string;
         priority: string | null;
-        tags: string[];
         checklist: import("@prisma/client/runtime/library").JsonValue | null;
         comments: import("@prisma/client/runtime/library").JsonValue | null;
         attachments: import("@prisma/client/runtime/library").JsonValue | null;
-        projectId: string;
         assigneeId: string | null;
-    }) | null>;
+    }>;
     findByProject(projectId: string): Promise<({
         assignee: {
             id: string;
@@ -119,7 +119,7 @@ export declare class TasksController {
             points: number;
             createdAt: Date;
             updatedAt: Date;
-        } | null;
+        };
     } & {
         id: string;
         points: number;
@@ -128,13 +128,13 @@ export declare class TasksController {
         status: string;
         description: string | null;
         deadline: Date;
+        tags: string[];
+        projectId: string;
         title: string;
         priority: string | null;
-        tags: string[];
         checklist: import("@prisma/client/runtime/library").JsonValue | null;
         comments: import("@prisma/client/runtime/library").JsonValue | null;
         attachments: import("@prisma/client/runtime/library").JsonValue | null;
-        projectId: string;
         assigneeId: string | null;
     })[]>;
     create(data: any): Promise<{
@@ -154,13 +154,13 @@ export declare class TasksController {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
         assignee: {
             id: string;
@@ -172,7 +172,7 @@ export declare class TasksController {
             points: number;
             createdAt: Date;
             updatedAt: Date;
-        } | null;
+        };
     } & {
         id: string;
         points: number;
@@ -181,13 +181,13 @@ export declare class TasksController {
         status: string;
         description: string | null;
         deadline: Date;
+        tags: string[];
+        projectId: string;
         title: string;
         priority: string | null;
-        tags: string[];
         checklist: import("@prisma/client/runtime/library").JsonValue | null;
         comments: import("@prisma/client/runtime/library").JsonValue | null;
         attachments: import("@prisma/client/runtime/library").JsonValue | null;
-        projectId: string;
         assigneeId: string | null;
     }>;
     update(id: string, data: any): Promise<{
@@ -207,13 +207,13 @@ export declare class TasksController {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
         assignee: {
             id: string;
@@ -225,7 +225,7 @@ export declare class TasksController {
             points: number;
             createdAt: Date;
             updatedAt: Date;
-        } | null;
+        };
     } & {
         id: string;
         points: number;
@@ -234,13 +234,13 @@ export declare class TasksController {
         status: string;
         description: string | null;
         deadline: Date;
+        tags: string[];
+        projectId: string;
         title: string;
         priority: string | null;
-        tags: string[];
         checklist: import("@prisma/client/runtime/library").JsonValue | null;
         comments: import("@prisma/client/runtime/library").JsonValue | null;
         attachments: import("@prisma/client/runtime/library").JsonValue | null;
-        projectId: string;
         assigneeId: string | null;
     }>;
     updateStatus(id: string, status: string): Promise<{
@@ -260,13 +260,13 @@ export declare class TasksController {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
         assignee: {
             id: string;
@@ -278,7 +278,7 @@ export declare class TasksController {
             points: number;
             createdAt: Date;
             updatedAt: Date;
-        } | null;
+        };
     } & {
         id: string;
         points: number;
@@ -287,13 +287,13 @@ export declare class TasksController {
         status: string;
         description: string | null;
         deadline: Date;
+        tags: string[];
+        projectId: string;
         title: string;
         priority: string | null;
-        tags: string[];
         checklist: import("@prisma/client/runtime/library").JsonValue | null;
         comments: import("@prisma/client/runtime/library").JsonValue | null;
         attachments: import("@prisma/client/runtime/library").JsonValue | null;
-        projectId: string;
         assigneeId: string | null;
     }>;
     delete(id: string): Promise<{
@@ -304,13 +304,13 @@ export declare class TasksController {
         status: string;
         description: string | null;
         deadline: Date;
+        tags: string[];
+        projectId: string;
         title: string;
         priority: string | null;
-        tags: string[];
         checklist: import("@prisma/client/runtime/library").JsonValue | null;
         comments: import("@prisma/client/runtime/library").JsonValue | null;
         attachments: import("@prisma/client/runtime/library").JsonValue | null;
-        projectId: string;
         assigneeId: string | null;
     }>;
 }

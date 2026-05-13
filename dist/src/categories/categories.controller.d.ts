@@ -16,7 +16,7 @@ export declare class CategoriesController {
         id: string;
         name: string;
         color: string;
-    } | null>;
+    }>;
     update(id: string, data: any): Promise<{
         id: string;
         name: string;

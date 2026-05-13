@@ -24,13 +24,13 @@ export declare class BudgetsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
     } & {
         id: string;
@@ -59,13 +59,13 @@ export declare class BudgetsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
     } & {
         id: string;
@@ -94,13 +94,13 @@ export declare class BudgetsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
     } & {
         id: string;
@@ -129,13 +129,13 @@ export declare class BudgetsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
     } & {
         id: string;
@@ -164,13 +164,13 @@ export declare class BudgetsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
     } & {
         id: string;
@@ -199,13 +199,13 @@ export declare class BudgetsService {
             formatSpecs: string | null;
             visualReference: string | null;
             deadline: Date | null;
+            clientId: string | null;
             platform: string | null;
             leadId: string | null;
             members: import("@prisma/client/runtime/library").JsonValue | null;
             designerIds: import("@prisma/client/runtime/library").JsonValue | null;
             pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
             referenceLinks: string | null;
-            clientId: string | null;
         };
     } & {
         id: string;

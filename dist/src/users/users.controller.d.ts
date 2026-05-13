@@ -23,7 +23,7 @@ export declare class UsersController {
         points: number;
         createdAt: Date;
         updatedAt: Date;
-    } | null>;
+    }>;
     create(data: {
         name: string;
         email: string;

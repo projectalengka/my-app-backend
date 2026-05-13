@@ -6,10 +6,9 @@
     "start": "node dist/main",
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main",
-    "build": "nest build",
+    "build": "tsc",
     "prisma:generate": "npx prisma generate",
-    "prisma:migrate": "npx prisma migrate deploy",
-    "prisma:studio": "prisma studio"
+    "prisma:migrate": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@nestjs/common": "^10.4.0",
@@ -27,6 +26,7 @@
   "devDependencies": {
     "@nestjs/cli": "^10.4.0",
     "@types/express": "^5.0.6",
+    "@types/node": "^25.7.0",
     "prisma": "^5.22.0",
     "typescript": "^5.5.0"
   },

@@ -34,7 +34,7 @@ export declare class AssetsService {
         url: string | null;
         size: string | null;
         folderId: string | null;
-    } | null>;
+    }>;
     update(id: string, data: any): Promise<{
         id: string;
         name: string;

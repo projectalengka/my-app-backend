@@ -12,13 +12,13 @@ export declare class ProjectsService {
             updatedAt: Date;
             status: string;
             platform: string;
-            tags: string[];
             company: string | null;
             phone: string | null;
             totalSpent: number;
             lastContact: Date | null;
+            tags: string[];
             country: string | null;
-        } | null;
+        };
         transactions: {
             paymentMethod: string | null;
             category: string | null;
@@ -26,12 +26,12 @@ export declare class ProjectsService {
             createdAt: Date;
             status: string;
             description: string | null;
-            projectId: string | null;
             type: string;
             amount: number;
             userId: string;
             date: Date;
             relatedId: string | null;
+            projectId: string | null;
             invoiceId: string | null;
             attachmentUrl: string | null;
         }[];
@@ -46,7 +46,7 @@ export declare class ProjectsService {
                 points: number;
                 createdAt: Date;
                 updatedAt: Date;
-            } | null;
+            };
         } & {
             id: string;
             points: number;
@@ -55,13 +55,13 @@ export declare class ProjectsService {
             status: string;
             description: string | null;
             deadline: Date;
+            tags: string[];
+            projectId: string;
             title: string;
             priority: string | null;
-            tags: string[];
             checklist: import("@prisma/client/runtime/library").JsonValue | null;
             comments: import("@prisma/client/runtime/library").JsonValue | null;
             attachments: import("@prisma/client/runtime/library").JsonValue | null;
-            projectId: string;
             assigneeId: string | null;
         })[];
         invoices: {
@@ -70,8 +70,8 @@ export declare class ProjectsService {
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -91,7 +91,7 @@ export declare class ProjectsService {
             plannedBudget: number;
             actualRevenue: number;
             actualExpenses: number;
-        } | null;
+        };
     } & {
         budget: number | null;
         category: string | null;
@@ -108,15 +108,15 @@ export declare class ProjectsService {
         formatSpecs: string | null;
         visualReference: string | null;
         deadline: Date | null;
+        clientId: string | null;
         platform: string | null;
         leadId: string | null;
         members: import("@prisma/client/runtime/library").JsonValue | null;
         designerIds: import("@prisma/client/runtime/library").JsonValue | null;
         pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
         referenceLinks: string | null;
-        clientId: string | null;
     })[]>;
-    findOne(id: string): Promise<({
+    findOne(id: string): Promise<{
         client: {
             id: string;
             name: string;
@@ -126,13 +126,13 @@ export declare class ProjectsService {
             updatedAt: Date;
             status: string;
             platform: string;
-            tags: string[];
             company: string | null;
             phone: string | null;
             totalSpent: number;
             lastContact: Date | null;
+            tags: string[];
             country: string | null;
-        } | null;
+        };
         transactions: {
             paymentMethod: string | null;
             category: string | null;
@@ -140,12 +140,12 @@ export declare class ProjectsService {
             createdAt: Date;
             status: string;
             description: string | null;
-            projectId: string | null;
             type: string;
             amount: number;
             userId: string;
             date: Date;
             relatedId: string | null;
+            projectId: string | null;
             invoiceId: string | null;
             attachmentUrl: string | null;
         }[];
@@ -160,7 +160,7 @@ export declare class ProjectsService {
                 points: number;
                 createdAt: Date;
                 updatedAt: Date;
-            } | null;
+            };
         } & {
             id: string;
             points: number;
@@ -169,13 +169,13 @@ export declare class ProjectsService {
             status: string;
             description: string | null;
             deadline: Date;
+            tags: string[];
+            projectId: string;
             title: string;
             priority: string | null;
-            tags: string[];
             checklist: import("@prisma/client/runtime/library").JsonValue | null;
             comments: import("@prisma/client/runtime/library").JsonValue | null;
             attachments: import("@prisma/client/runtime/library").JsonValue | null;
-            projectId: string;
             assigneeId: string | null;
         })[];
         invoices: {
@@ -184,8 +184,8 @@ export declare class ProjectsService {
             updatedAt: Date;
             status: string;
             clientId: string;
-            projectId: string | null;
             notes: string | null;
+            projectId: string | null;
             invoiceNumber: string;
             issueDate: Date;
             dueDate: Date;
@@ -205,7 +205,7 @@ export declare class ProjectsService {
             plannedBudget: number;
             actualRevenue: number;
             actualExpenses: number;
-        } | null;
+        };
     } & {
         budget: number | null;
         category: string | null;
@@ -222,14 +222,14 @@ export declare class ProjectsService {
         formatSpecs: string | null;
         visualReference: string | null;
         deadline: Date | null;
+        clientId: string | null;
         platform: string | null;
         leadId: string | null;
         members: import("@prisma/client/runtime/library").JsonValue | null;
         designerIds: import("@prisma/client/runtime/library").JsonValue | null;
         pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
         referenceLinks: string | null;
-        clientId: string | null;
-    }) | null>;
+    }>;
     create(data: {
         name: string;
         description?: string;
@@ -265,13 +265,13 @@ export declare class ProjectsService {
         formatSpecs: string | null;
         visualReference: string | null;
         deadline: Date | null;
+        clientId: string | null;
         platform: string | null;
         leadId: string | null;
         members: import("@prisma/client/runtime/library").JsonValue | null;
         designerIds: import("@prisma/client/runtime/library").JsonValue | null;
         pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
         referenceLinks: string | null;
-        clientId: string | null;
     }>;
     update(id: string, data: any): Promise<{
         budget: number | null;
@@ -289,13 +289,13 @@ export declare class ProjectsService {
         formatSpecs: string | null;
         visualReference: string | null;
         deadline: Date | null;
+        clientId: string | null;
         platform: string | null;
         leadId: string | null;
         members: import("@prisma/client/runtime/library").JsonValue | null;
         designerIds: import("@prisma/client/runtime/library").JsonValue | null;
         pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
         referenceLinks: string | null;
-        clientId: string | null;
     }>;
     delete(id: string): Promise<{
         budget: number | null;
@@ -313,12 +313,12 @@ export declare class ProjectsService {
         formatSpecs: string | null;
         visualReference: string | null;
         deadline: Date | null;
+        clientId: string | null;
         platform: string | null;
         leadId: string | null;
         members: import("@prisma/client/runtime/library").JsonValue | null;
         designerIds: import("@prisma/client/runtime/library").JsonValue | null;
         pointConfig: import("@prisma/client/runtime/library").JsonValue | null;
         referenceLinks: string | null;
-        clientId: string | null;
     }>;
 }

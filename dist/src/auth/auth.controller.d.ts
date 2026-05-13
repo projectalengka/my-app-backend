@@ -8,8 +8,8 @@ export declare class AuthController {
     }): Promise<{
         user: {
             id: string;
-            email: string;
             name: string;
+            email: string;
             password: string | null;
             avatar: string | null;
             role: string;

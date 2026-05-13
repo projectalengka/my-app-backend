@@ -4,9 +4,9 @@ export declare class NotificationsService {
     constructor(prisma: PrismaService);
     create(data: any): Promise<{
         id: string;
-        title: string;
         type: string;
         userId: string;
+        title: string;
         timestamp: Date;
         message: string;
         read: boolean;
@@ -14,9 +14,9 @@ export declare class NotificationsService {
     }>;
     findAll(): Promise<{
         id: string;
-        title: string;
         type: string;
         userId: string;
+        title: string;
         timestamp: Date;
         message: string;
         read: boolean;
@@ -24,19 +24,19 @@ export declare class NotificationsService {
     }[]>;
     findOne(id: string): Promise<{
         id: string;
-        title: string;
         type: string;
         userId: string;
+        title: string;
         timestamp: Date;
         message: string;
         read: boolean;
         link: string | null;
-    } | null>;
+    }>;
     update(id: string, data: any): Promise<{
         id: string;
-        title: string;
         type: string;
         userId: string;
+        title: string;
         timestamp: Date;
         message: string;
         read: boolean;
@@ -44,9 +44,9 @@ export declare class NotificationsService {
     }>;
     remove(id: string): Promise<{
         id: string;
-        title: string;
         type: string;
         userId: string;
+        title: string;
         timestamp: Date;
         message: string;
         read: boolean;

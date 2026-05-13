@@ -28,7 +28,7 @@ export declare class SopsService {
         description: string | null;
         title: string;
         steps: import("@prisma/client/runtime/library").JsonValue | null;
-    } | null>;
+    }>;
     update(id: string, data: any): Promise<{
         category: string;
         id: string;

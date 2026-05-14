@@ -1,28 +1,22 @@
-import { NestFactory } from "@nestjs/core";
+﻿import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { json, urlencoded } from "express";
 
 async function bootstrap() {
-  // Matikan parser bawaan NestJS
   const app = await NestFactory.create(AppModule, { bodyParser: false });
 
-  // ✅ CORS yang lebih aman (untuk Vercel nanti)
   app.enableCors({
-    origin: [
-      "http://localhost:3000", // lokal development
-      "https://NAMA-FRONTEND-KAMU.vercel.app", // nanti ganti dengan URL Vercel kamu
-    ],
+    origin: true,
     credentials: true,
   });
 
-  // ✅ Parser manual dengan limit 50MB (sesuai kebutuhan kamu)
   app.use(json({ limit: "50mb" }));
   app.use(urlencoded({ extended: true, limit: "50mb" }));
 
-  // ✅ Port dinamis untuk Bonto (WAJIB!)
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
+  const port = process.env.PORT || 8080;
+  await app.listen(port, "0.0.0.0");
 
-  console.log(`🚀 Shaman Backend berjalan di port ${port}`);
+  console.log(`Shaman Backend running on port ${port}`);
 }
+
 bootstrap();

@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Backend Shaman OS - NestJS + Prisma",
   "scripts": {
-    "start": "node dist/main",
+    "start": "node dist/src/main.js",
     "start:dev": "nest start --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/src/main.js",
     "build": "tsc",
     "prisma:generate": "npx prisma generate",
-    "prisma:migrate": "npx prisma migrate deploy"
+    "prisma:migrate": "npx prisma migrate deploy",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@nestjs/common": "^10.4.0",

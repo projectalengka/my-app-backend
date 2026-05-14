@@ -3,6 +3,8 @@ import { json, urlencoded } from "express";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
+  console.log("Starting Shaman Backend bootstrap");
+
   const app = await NestFactory.create(AppModule, { bodyParser: false });
 
   app.enableCors({
@@ -28,9 +30,13 @@ async function bootstrap() {
   });
 
   const port = Number(process.env.PORT) || 8080;
-  await app.listen(port, "0.0.0.0");
 
+  console.log(`About to listen on port ${port}`);
+  await app.listen(port, "0.0.0.0");
   console.log(`Shaman Backend running on port ${port}`);
 }
 
-bootstrap();
+bootstrap().catch((error) => {
+  console.error("Bootstrap failed", error);
+  process.exit(1);
+});
